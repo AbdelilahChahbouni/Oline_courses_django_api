@@ -1,0 +1,19 @@
+-API: Oline Courses
+    -Course :
+	1- name
+	2- subtitle
+ 	3- description
+	4- price 
+	5- category
+	6- reviews
+-API Requirements
+    -Repo Github
+    -Commit Each Step
+    -Dummy Data
+    -Api Endpoints:
+	-List Courses --> [search , filter , orderby , pagination]
+	-Details Course --> [course_name , category , reviews]
+	-List Category
+
+
+	
