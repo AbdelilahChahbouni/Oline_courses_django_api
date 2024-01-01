@@ -5,19 +5,27 @@ from datetime import timezone
 
 
 
-categories_name = (
-    ("development","development"),
-    ("Design","Design"),
-    ("It","It"),
-    ("Marketing","Marketing"),
-)
+# categories_name = (
+#     ("development","development"),
+#     ("Design","Design"),
+#     ("It","It"),
+#     ("Marketing","Marketing"),
+# )
+
+class Categories(models.TextChoices):
+    development = "development"
+    Design = "Design"
+    It = "It"
+    Marketing = "Marketing"
+    
+
 
 class Course(models.Model):
     name = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=500)
     description = models.TextField(max_length=2000)
     price = models.FloatField()
-    categorie = models.CharField(max_length=15,choices=categories_name)
+    categorie = models.CharField(max_length=15,choices=Categories.choices)
 
     def __str__(self):
         return self.name
