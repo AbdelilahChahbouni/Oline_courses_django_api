@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import timezone
+from django.utils import timezone
+
 # Create your models here.
 
 
@@ -12,11 +13,13 @@ from datetime import timezone
 #     ("Marketing","Marketing"),
 # )
 
-class Categories(models.TextChoices):
-    development = "development"
-    Design = "Design"
-    It = "It"
-    Marketing = "Marketing"
+
+class Categories(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
     
 
 
@@ -25,13 +28,13 @@ class Course(models.Model):
     subtitle = models.CharField(max_length=500)
     description = models.TextField(max_length=2000)
     price = models.FloatField()
-    categorie = models.CharField(max_length=15,choices=Categories.choices)
+    categorie = models.ForeignKey(Categories , related_name="course_categorie" , on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
     
 
-    
+
 
 
 
@@ -39,7 +42,7 @@ class Reviews(models.Model):
     user = models.ForeignKey(User ,related_name="review_user" , on_delete=models.SET_NULL , null= True)
     course = models.ForeignKey(Course , related_name="course_review" , on_delete=models.CASCADE)
     review = models.CharField(max_length=200)
-    create_at = models.DateTimeField(default=timezone)
+    create_at = models.DateTimeField(default=timezone.now)
 
 
 
