@@ -43,8 +43,8 @@ def seek_course(number):
 
 
 
-#seek_categorie(20)
-seek_course(20)
+seek_categorie(30)
+seek_course(30)
 
 
 

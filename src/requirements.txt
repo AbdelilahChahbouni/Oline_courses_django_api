@@ -1,5 +1,6 @@
-django
-rest_framework
+Django 
 django-filter
+djangorestframework
+markdown
 Faker
-
+psycopg2
